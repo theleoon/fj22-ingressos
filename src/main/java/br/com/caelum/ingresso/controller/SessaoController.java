@@ -20,6 +20,7 @@ import br.com.caelum.ingresso.client.OmdbClient;
 import br.com.caelum.ingresso.dao.FilmeDao;
 import br.com.caelum.ingresso.dao.SalaDao;
 import br.com.caelum.ingresso.dao.SessaoDao;
+import br.com.caelum.ingresso.model.Carrinho;
 import br.com.caelum.ingresso.model.Filme;
 import br.com.caelum.ingresso.model.GerenciadorDeSessao;
 import br.com.caelum.ingresso.model.Sala;
@@ -41,6 +42,9 @@ public class SessaoController {
 	
 	@Autowired
 	private OmdbClient client;
+	
+	@Autowired
+	private Carrinho carrinho;
 	
 	
 	@GetMapping("/admin/sessao")
@@ -83,7 +87,7 @@ public class SessaoController {
 	}
 	
 	@GetMapping("sessao/{sessaoId}/lugares")
-	public ModelAndView lugares(@PathVariable("sessaoId") Integer sessaoId) {
+	public ModelAndView lugaresNaSessao(@PathVariable("sessaoId") Integer sessaoId) {
 		
 		ModelAndView modelAndView = new ModelAndView("sessao/lugares");
 		
@@ -92,6 +96,7 @@ public class SessaoController {
 		Optional<ImagemCapa> optionalImagemCapa = client.request(sessao.getFilme(), ImagemCapa.class);
 		
 		modelAndView.addObject("sessao", sessao);
+		modelAndView.addObject("carrinho", carrinho);
 		modelAndView.addObject("imagemCapa", optionalImagemCapa.orElse(new ImagemCapa()));
 		modelAndView.addObject("tiposDeIngressos", TipoDeIngresso.values());
 		

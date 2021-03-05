@@ -48,6 +48,16 @@ public class Sessao {
 	}
 	
 	public boolean isDisponivel(Lugar lugarSelecionado) {
+		
+//		Com for normal
+//		for (Ingresso ingresso : ingressos) {
+//			
+//			if (ingresso.getLugar().equals(lugarSelecionado)) {
+//				return false;
+//			}
+//		}
+//		return true;
+		
 		return ingressos.stream().map(Ingresso::getLugar).noneMatch(lugar -> lugar.equals(lugarSelecionado));
 	}
 
