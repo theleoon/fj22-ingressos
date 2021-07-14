@@ -103,7 +103,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.40</version>
+            <version>8.0.23</version>
         </dependency>
 
         <dependency>
@@ -124,6 +124,7 @@
             <version>2.2.12</version>
         </dependency>
     </dependencies>
+    
     <build>
         <finalName>ingresso</finalName>
         <plugins>
@@ -147,6 +148,7 @@
                     <scanIntervalSeconds>10</scanIntervalSeconds>
                 </configuration>
             </plugin>
+            
         </plugins>
     </build>
 
